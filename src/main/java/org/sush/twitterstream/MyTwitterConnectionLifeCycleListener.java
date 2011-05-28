@@ -25,14 +25,21 @@ package org.sush.twitterstream;
 import twitter4j.ConnectionLifeCycleListener;
 
 public class MyTwitterConnectionLifeCycleListener implements ConnectionLifeCycleListener{
+	
+	private MyTwitterStream myTwitterStream;
+	
+	public MyTwitterConnectionLifeCycleListener(MyTwitterStream myTwitterStream) {
+		super();
+		this.myTwitterStream = myTwitterStream;
+	}
 
 	public void onConnect() {
-		// TODO Auto-generated method stub
+		myTwitterStream.setStreamOn(true);
 		
 	}
 
 	public void onDisconnect() {
-		// TODO Auto-generated method stub
+		myTwitterStream.setStreamOn(false);
 		
 	}
 

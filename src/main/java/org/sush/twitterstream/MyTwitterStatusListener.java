@@ -25,12 +25,19 @@ package org.sush.twitterstream;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 import twitter4j.StatusListener;
+import twitter4j.TwitterException;
 
 public class MyTwitterStatusListener implements StatusListener{
+	private MyTwitterStream myTwitterStream;
+	
+	public MyTwitterStatusListener(MyTwitterStream myTwitterStream) {
+		super();
+		this.myTwitterStream = myTwitterStream;
+	}
 
 	public void onException(Exception ex) {
-		// TODO Auto-generated method stub
-		
+		TwitterException te = (TwitterException)ex;
+		myTwitterStream.setTwitterException(te);		
 	}
 
 	public void onStatus(Status status) {
